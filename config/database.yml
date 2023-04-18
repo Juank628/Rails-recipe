@@ -34,6 +34,8 @@ development:
 
   # The password associated with the postgres role (username).
   #password:
+
+  # The password associated with the postgres role (username).
   password: MyPassword
 
   # Connect on a TCP socket. Omitted by default since the client uses a
