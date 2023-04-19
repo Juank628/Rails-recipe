@@ -17,7 +17,9 @@
       <td><%= food.name %></td>
       <td><%= food.measurement_unit %></td>
       <td><%= food.price %></td>
-      <td><a>Delete</a></td>
+      <td> 
+        <%= link_to 'Destroy', "/foods/#{food.id}", data: {:confirm => 'Are you sure?'}, :method => :delete %>
+      </td>
     </tr>
   </tbody>
   <% end %>
