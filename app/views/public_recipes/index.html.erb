@@ -1,0 +1,19 @@
+<div class="recipes-container">
+  <% if @public_recipes.empty? %>
+    <div>
+      <h1> No public recipes to show. </h1>
+    <div>
+  <% else %>
+    <% @public_recipes.each do |public_recipe| %>
+      <div class="public_recipe-and-comments">
+        <%= link_to public_recipe_path(public_recipe) do %>
+          <div class="public_recipe">
+            <h4>public_recipe #<%= public_recipe.id %></h4>
+            <h3>Title #<%= public_recipe.name %></h3>
+            <p><%= public_recipe.description %></p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
