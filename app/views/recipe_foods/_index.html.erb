@@ -1,0 +1,34 @@
+<div class="table table-striped mt-5">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th class="text-center" scope="col">Food Name</th>
+        <th class="text-center" scope="col">Quantity</th>
+        <th class="text-center" scope="col">Price Per Unit</th>
+        <th class="text-center" scope="col">Total Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @recipe_foods.each do |recipe_food| %>
+        <tr>
+          <td><%= recipe_food.food.name %></td>
+          <td class="text-center d-flex">
+            <%= form_with model: recipe_food, url: recipe_food_path(recipe_food), class: "col-xs-2", method: :patch do |form| %>
+              <%= form.hidden_field :recipe_id, value: recipe_food.recipe_id %>
+              <%= form.hidden_field :food_id, value: recipe_food.food_id %>
+              <div class="input-group mb-2">
+                <%= form.number_field :quantity, class: "form-control text-center", value: recipe_food.quantity, required: true, style: "width: 150px", step: "any" %>
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><%= recipe_food.food.measurement_unit %></div>
+                </div>
+              </div>
+              <%= form.submit "Update", class: "btn btn-primary" %>
+            <% end %>
+          </td>
+          <td class="text-center"><%= recipe_food.food.price %></td>
+          <td class="text-center"><%= recipe_food.quantity*recipe_food.food.price %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
