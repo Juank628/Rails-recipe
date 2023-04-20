@@ -1,12 +1,18 @@
 <div class="container mt-3">
-  <div class="full-recipe">
-    <h4>Recipe # <%= @recipe.id %></h4>
-    <h3>Title # <%= @recipe.name %> by <%= @user.name %></h3>
-    <p class='recipe-text'><%= @recipe.description %></p>
-    <%= form_with model: @recipe, url: recipe_path(@recipe), class: "form-check form-switch", method: :patch do |form| %>
-      <%= form.label :public, class: "form-check-label", for: "flexSwitchCheckDefault" %>
-      <%= form.check_box :public, class: "form-check-input", role: "switch", id: "flexSwitchCheckDefault" %>
-    <% end %>
+  <div class="jumbotron d-flex justify-content-around">
+    <div>
+      <h3 class="display-6"><%= @recipe.name %> by <%= @user.name %></h3>
+      <p class="lead">Preparation Time: <%= @recipe.preparation_time %> hour</p>
+      <p class="lead">Cooking Time: <%= @recipe.cooking_time %> hour</p>
+      <hr class="my-4">
+      <p class='recipe-text'><%= @recipe.description %></p>
+    </div>
+    <div>
+      <%= form_with model: @recipe, url: recipe_path(@recipe), class: "form-check form-switch", method: :patch do |form| %>
+        <%= form.check_box :public, class: "form-check-input", role: "switch", id: "flexSwitchCheckDefault", style: "cursor: pointer" %>
+        <%= form.label :public, class: "form-check-label", for: "flexSwitchCheckDefault" %>
+      <% end %>
+    </div>
   </div>
 
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#foodsModal">
@@ -18,7 +24,6 @@
   <% if flash[:error] %>
     <div class="alert alert-danger"><%= flash[:error] %></div>
   <% end %>
-
   <%= render("recipe_foods/index", recipe_foods: @recipe_foods) %>
 
 

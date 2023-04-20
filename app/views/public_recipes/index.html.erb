@@ -1,17 +1,32 @@
 <div class="recipes-container">
   <% if @public_recipes.empty? %>
-    <div>
+    <div class="text-center">
       <h1> No public recipes to show. </h1>
     <div>
   <% else %>
+    <div class="card-header mb-3">
+      <h3>All available public recipes</h3>
+    </div>
     <% @public_recipes.each do |public_recipe| %>
-      <div class="public_recipe-and-comments">
-        <%= link_to public_recipe_path(public_recipe) do %>
-          <div class="public_recipe">
-            <h4>public_recipe #<%= public_recipe.id %></h4>
-            <h3>Title #<%= public_recipe.name %></h3>
-            <p><%= public_recipe.description %></p>
-          </div>
+      <div class="card">
+        <% if public_recipe.user_id == current_user.id %>
+          <%= link_to recipe_path(public_recipe), style: "text-decoration: none; color: black" do %>
+            <div class="card-header">
+              <h4><%= public_recipe.name %> by <%= public_recipe.user.name %></h4> 
+            </div>
+            <div class="card-body">
+              <p class="card-text"><%= public_recipe.description %></p>
+            </div>
+          <% end %>
+        <% else %>
+          <%= link_to public_recipe_path(public_recipe), style: "text-decoration: none; color: black" do %>
+            <div class="card-header">
+              <h4><%= public_recipe.name %> by <%= public_recipe.user.name %></h4>
+            </div>
+            <div class="card-body">
+              <p class="card-text"><%= public_recipe.description %></p>
+            </div>
+          <% end %>
         <% end %>
       </div>
     <% end %>
