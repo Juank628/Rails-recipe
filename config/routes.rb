@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :foods
   resources :recipe_foods, only: %i[new create update]
+  resources :shopping_lists, path: 'general_shopping_list'
 end
