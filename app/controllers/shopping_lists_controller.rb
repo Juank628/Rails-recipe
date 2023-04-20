@@ -7,7 +7,7 @@ class ShoppingListsController < ApplicationController
     @to_buy = 0
     @total_value = 0
 
-    return if @ingredients.length == 0 || @foods.length == 0
+    return if @ingredients.empty? || @foods.empty?
 
     @ingredients.each do |ingredient|
       @to_buy = ingredient[1] - @foods.find(ingredient[0].id).quantity
