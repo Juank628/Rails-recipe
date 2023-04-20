@@ -8,14 +8,20 @@
       <h3>All available public recipes</h3>
     </div>
     <% @public_recipes.each do |public_recipe| %>
+      <% @public_recipe_foods = RecipeFood.where(recipe_id: public_recipe.id) %>
+      <% @total_price = 0 %>
+      <% @public_recipe_foods.each do |public_recipe_food| %>
+        <% @total_price += public_recipe_food.quantity*public_recipe_food.food.price %>
+      <% end %>
       <div class="card">
         <% if public_recipe.user_id == current_user.id %>
           <%= link_to recipe_path(public_recipe), style: "text-decoration: none; color: black" do %>
             <div class="card-header">
               <h4><%= public_recipe.name %> by <%= public_recipe.user.name %></h4> 
             </div>
-            <div class="card-body">
-              <p class="card-text"><%= public_recipe.description %></p>
+            <div class="card-body d-flex" style="gap: 1em">
+              <p class="card-text">Total Food Items: <%= @public_recipe_foods.length %></p>
+              <p class="card-text">Total Price: <%= @total_price %></p>
             </div>
           <% end %>
         <% else %>
@@ -23,8 +29,9 @@
             <div class="card-header">
               <h4><%= public_recipe.name %> by <%= public_recipe.user.name %></h4>
             </div>
-            <div class="card-body">
-              <p class="card-text"><%= public_recipe.description %></p>
+            <div class="card-body d-flex" style="gap: 1em">
+              <p class="card-text">Total Food Items: <%= @public_recipe_foods.length %></p>
+              <p class="card-text">Total Price: <%= @total_price %></p>
             </div>
           <% end %>
         <% end %>
