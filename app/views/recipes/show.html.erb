@@ -1,2 +1,31 @@
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
+<div class="container mt-3">
+  <div class="full-recipe">
+    <h4>Recipe # <%= @recipe.id %></h4>
+    <h3>Title # <%= @recipe.name %> by <%= @user.name %></h3>
+    <p class='recipe-text'><%= @recipe.description %></p>
+    <%= form_with model: @recipe, url: recipe_path(@recipe), class: "form-check form-switch", method: :patch do |form| %>
+      <%= form.label :public, class: "form-check-label", for: "flexSwitchCheckDefault" %>
+      <%= form.check_box :public, class: "form-check-input", role: "switch", id: "flexSwitchCheckDefault" %>
+    <% end %>
+  </div>
+
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#foodsModal">
+    Add Ingredients
+  </button>
+
+  <%= render "food_list_modal", recipe: @recipe, food: @food %>
+
+  <% if flash[:error] %>
+    <div class="alert alert-danger"><%= flash[:error] %></div>
+  <% end %>
+
+  <%= render("recipe_foods/index", recipe_foods: @recipe_foods) %>
+
+
+</div>
+
+<script> 
+  $(document).on('change', '#flexSwitchCheckDefault', function() {
+    $(this).closest('form').submit();
+  });
+</script>

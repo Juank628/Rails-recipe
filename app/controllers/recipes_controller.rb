@@ -7,6 +7,9 @@ class RecipesController < ApplicationController
   def show
     @user = current_user
     @recipe = @user.recipes.find(params[:id])
+    @foods = @user.foods.all
+    @recipe_food = RecipeFood.new
+    @recipe_foods = RecipeFood.where(recipe_id: params[:id])
   end
 
   def new
@@ -22,6 +25,21 @@ class RecipesController < ApplicationController
         format.html { redirect_to recipes_path }
       else
         format.html { render :new }
+      end
+    end
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update(recipe_params)
+      respond_to do |format|
+        format.html { redirect_to @recipe }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { render :edit }
+        format.js
       end
     end
   end
