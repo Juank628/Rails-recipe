@@ -1,2 +1,19 @@
-<h1>PublicRecipes#show</h1>
-<p>Find me in app/views/public_recipes/show.html.erb</p>
+<div class="container mt-3">
+  <div class="jumbotron d-flex justify-content-around">
+    <div>
+      <h3 class="display-6"><%= @public_recipe.name %> by <%= @public_recipe.user.name %></h3>
+      <p class="lead">Preparation Time: <%= @public_recipe.preparation_time %> hour</p>
+      <p class="lead">Cooking Time: <%= @public_recipe.cooking_time %> hour</p>
+      <hr class="my-4">
+      <p class='public_recipe-text'><%= @public_recipe.description %></p>
+    </div>
+    <div>
+      <%= form_with model: @public_recipe, class: "form-check form-switch" do |form| %>
+        <%= form.check_box :public, class: "form-check-input", readonly: true, style: "pointer-events: none" %>
+        <%= form.label :public, class: "form-check-label", for: "flexSwitchCheckDefault" %>
+      <% end %>
+    </div>
+  </div>
+
+  <%= render("ingredients", public_recipe_foods: @public_recipe_foods) %>
+</div>

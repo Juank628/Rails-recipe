@@ -1,0 +1,28 @@
+<div class="table table-striped mt-5">
+  <% if @public_recipe_foods.empty? %>
+    <h3 class="text-center">No ingredients has been added by the cook yet.</h3>
+  <% else %>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th class="text-center" scope="col">Food Name</th>
+          <th class="text-center" scope="col">Quantity</th>
+          <th class="text-center" scope="col">Measurement Units</th>
+          <th class="text-center" scope="col">Price Per Unit</th>
+          <th class="text-center" scope="col">Total Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @public_recipe_foods.each do |public_recipe_food| %>
+          <tr>
+            <td><%= public_recipe_food.food.name %></td>
+            <td class="text-center"><%= public_recipe_food.food.quantity %></td>
+            <td class="text-center"><%= public_recipe_food.food.measurement_unit %></td>
+            <td class="text-center"><%= public_recipe_food.food.price %></td>
+            <td class="text-center"><%= public_recipe_food.quantity*public_recipe_food.food.price %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>
