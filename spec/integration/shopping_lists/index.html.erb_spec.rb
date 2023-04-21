@@ -14,7 +14,7 @@ RSpec.describe 'shopping_list/index.html.erb', type: :feature do
 
     RecipeFood.create(recipe_id: @recipe.id, food_id: @food.id, quantity: 100)
     RecipeFood.create(recipe_id: @recipe.id, food_id: @food2.id, quantity: 100)
-                             
+
     visit public_recipes_path
   end
 
