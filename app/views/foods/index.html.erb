@@ -1,20 +1,22 @@
-<h1>Foods</h1>
+<h3>Available Food Items</h3>
 <a href="/foods/new">
   <button type="button" class="btn btn-primary mb-3">Add food</button>
 </a>
-<table class="table">
-  <thead>
+<table class="table mt-4">
+  <thead class="thead-dark">
     <tr>
-      <td>Food</td>
-      <td>Measurement unit</td>
-      <td>Unit price</td>
-      <td>Actions</td>
+      <th>Food</th>
+      <th>Available Quantity</th>
+      <th>Measurement unit</th>
+      <th>Unit price</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <%@foods.each do |food|%>
   <tbody>
     <tr>
       <td><%= food.name %></td>
+      <td><%= food.quantity %></td>
       <td><%= food.measurement_unit %></td>
       <td><%= food.price %></td>
       <td> 
@@ -24,3 +26,4 @@
   </tbody>
   <% end %>
 </table>
+
