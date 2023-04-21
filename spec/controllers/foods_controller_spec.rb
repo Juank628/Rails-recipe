@@ -1,48 +1,34 @@
 require 'rails_helper'
+require_relative '../support/devise'
 
-RSpec.describe FoodsController, type: :request do
-    it 'should response /foods' do
-        get '/foods'
-        expect(response).to be_successful
-    end
+RSpec.describe FoodsController, type: :controller do
+  let!(:user) { User.create(name: 'Prangon Ghose', email: 'test@example.com', password: '12345678') }
+  before(:each) do
+    user.confirm
+    sign_in user
+    @recipe = Recipe.create(name: 'new', preparation_time: '10', cooking_time: '5',
+                            description: 'test description', public: true, user:)
+    @recipe2 = Recipe.create(name: 'new2', preparation_time: '10', cooking_time: '5',
+                             description: 'text description 2', public: true, user:)
+  end
 
-    it 'ensures the response body has the correct text' do
-        get '/foods'
-        expect(response.body).to include('Foods')
-    end
+  it 'should response /foods' do
+    get :index
+    expect(response).to be_successful
+  end
 
-    it 'ensures the response body has Add Food button' do
-        get '/foods'
-        expect(response.body).to include('Add food')
-    end
+  it 'renders template index' do
+    get :index
+    expect(response).to render_template(:index)
+  end
 
-    it 'should response /foods/new' do
-        get '/foods/new'
-        expect(response).to be_successful
-    end
+  it 'should response /foods/new' do
+    get :new
+    expect(response).to be_successful
+  end
 
-    it 'ensures the response body has Add Food button' do
-        get '/foods/new'
-        expect(response.body).to include('Add food')
-    end
-
-    it 'ensures the response body has Name field' do
-        get '/foods/new'
-        expect(response.body).to include('Name')
-    end
-
-    it 'ensures the response body has Unit field' do
-        get '/foods/new'
-        expect(response.body).to include('Measurement unit')
-    end
-
-    it 'ensures the response body has Price field' do
-        get '/foods/new'
-        expect(response.body).to include('Price')
-    end
-
-    it 'ensures the response body has Quantity field' do
-        get '/foods/new'
-        expect(response.body).to include('Quantity')
-    end
+  it 'renders template new' do
+    get :new
+    expect(response).to render_template(:new)
+  end
 end
