@@ -76,4 +76,8 @@ group :test do
   gem 'rspec'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+  gem 'rails-controller-testing'
+  gem 'factory_bot'
+  gem 'warden'
+  gem 'faker'
 end
