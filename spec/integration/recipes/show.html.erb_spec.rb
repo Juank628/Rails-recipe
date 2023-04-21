@@ -36,13 +36,13 @@ RSpec.describe 'recipes/show.html.erb', type: :feature do
     expect(find('input[data-disable-with="Update"]').value).to eq('Update')
     expect(page).to have_content('Delete')
   end
-  
+
   it 'redirects me to my recipes' do
     link = find("a[href='#{recipes_path}']")
     link.click
     expect(page).to have_current_path(recipes_path)
   end
-  
+
   it 'a button to show the modal of add ingredients' do
     expect(page).to have_content('Add Ingredients')
   end

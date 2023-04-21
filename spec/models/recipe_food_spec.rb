@@ -9,15 +9,15 @@ RSpec.describe RecipeFood, type: :model do
     )
   end
 
-  before {subject.save}
+  before { subject.save }
 
   it 'will not accept a new entry having same recipe id and food id' do
-    recipe_food_2 = RecipeFood.new(
+    recipe_food2 = RecipeFood.new(
       quantity: 100,
       recipe_id: 1,
       food_id: 1
     )
-    expect(recipe_food_2).to_not be_valid
+    expect(recipe_food2).to_not be_valid
   end
 
   it 'quantity should be present' do

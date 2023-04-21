@@ -37,9 +37,9 @@ RSpec.describe 'recipes/index.html.erb', type: :feature do
   end
 
   it 'redirects me to a add another recipe' do
-    link = find("a[href='#{new_recipe_path()}']")
+    link = find("a[href='#{new_recipe_path}']")
     link.click
-    expect(page).to have_current_path(new_recipe_path())
+    expect(page).to have_current_path(new_recipe_path)
   end
 
   it 'redirects me to public recipes' do

@@ -31,7 +31,7 @@ RSpec.describe Recipe, type: :model do
     subject.cooking_time = nil
     expect(subject).to_not be_valid
   end
-  
+
   it 'cooking time should be positive' do
     subject.cooking_time = -10
     expect(subject).to_not be_valid
