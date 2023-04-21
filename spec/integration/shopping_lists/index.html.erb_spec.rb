@@ -9,8 +9,8 @@ RSpec.describe 'shopping_list/index.html.erb', type: :feature do
                             description: 'test description', public: true, user:)
     @recipe2 = Recipe.create(name: 'new2', preparation_time: '10', cooking_time: '5',
                              description: 'text description 2', public: false, user:)
-    @food = Food.create(name: 'orange', measurement_unit: 'Kg', price: 10, quantity: 5)
-    @food2 = Food.create(name: 'apple', measurement_unit: 'Kg', price: 20, quantity: 30)
+    @food = Food.create(name: 'orange', measurement_unit: 'Kg', price: 10, quantity: 5, user:)
+    @food2 = Food.create(name: 'apple', measurement_unit: 'Kg', price: 20, quantity: 30, user:)
 
     RecipeFood.create(recipe_id: @recipe.id, food_id: @food.id, quantity: 100)
     RecipeFood.create(recipe_id: @recipe.id, food_id: @food2.id, quantity: 100)
@@ -24,12 +24,12 @@ RSpec.describe 'shopping_list/index.html.erb', type: :feature do
 
   scenario 'Show the field of food items to buy' do
     visit '/general_shopping_list'
-    expect(page).to have_selector('.total-items')
+    expect(page).to have_selector('.total-items', text: '2')
   end
 
   scenario 'Show the field of total ammount to buy' do
     visit '/general_shopping_list'
-    expect(page).to have_selector('.total-value')
+    expect(page).to have_selector('.total-value', text: '2350.0')
   end
 
   scenario 'Show the ingredients table' do
