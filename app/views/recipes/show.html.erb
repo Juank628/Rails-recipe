@@ -15,9 +15,14 @@
     </div>
   </div>
 
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#foodsModal">
-    Add Ingredients
-  </button>
+  <div class="d-flex justify-content-between">
+    <%= button_to 'Generate Shopping List', shopping_lists_path, method: :get, class: "btn btn-primary" %>
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#foodsModal">
+      Add Ingredients
+    </button>
+  </div>
+
 
   <%= render "food_list_modal", recipe: @recipe, food: @food %>
 
