@@ -19,5 +19,8 @@ RSpec.describe 'foods/index.html.erb', type: :feature do
     expect(page).to have_content('apple')
   end
 
-
+  it 'Shows the foods prices' do
+    expect(page).to have_content('10')
+    expect(page).to have_content('20')
+  end
 end
