@@ -16,7 +16,11 @@ RSpec.describe 'foods/new.html.erb', type: :feature do
     expect(page).to have_selector('.form-control', count: 4)
   end
 
+  it 'Shows the correct form with the action /foods' do
+    expect(page).to have_selector('form[action="/foods"]')
+  end
+
   it 'Shows the add food button' do
-    expect(page).to have_selector('.btn-primary')
+    expect(page).to have_selector('.btn-primary[type="submit"]')
   end
 end
