@@ -14,6 +14,10 @@ RSpec.describe 'foods/index.html.erb', type: :feature do
     expect(page).to have_content('Foods')
   end
 
+  it 'Shows 2 foods in the list' do
+    expect(page).to have_selector('.food-row', count: 2)
+  end
+
   it 'Shows the foods names' do
     expect(page).to have_content('orange')
     expect(page).to have_content('apple')
@@ -22,5 +26,11 @@ RSpec.describe 'foods/index.html.erb', type: :feature do
   it 'Shows the foods prices' do
     expect(page).to have_content('10')
     expect(page).to have_content('20')
+  end
+
+  it 'Add food button should redirect to correct page' do
+    new_food_link = page.all(:link, 'Add food')[0]
+    click_link(href: new_food_link['href'])
+    expect(current_path) == new_food_path
   end
 end
