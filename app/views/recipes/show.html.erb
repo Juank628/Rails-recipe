@@ -1,17 +1,21 @@
 <div class="container mt-3">
-  <div class="jumbotron d-flex justify-content-around">
+  <div class="jumbotron p-4">
+    <h3 class="display-6 text-center"><%= @recipe.name %> by <%= @user.name %></h3>
     <div>
-      <h3 class="display-6"><%= @recipe.name %> by <%= @user.name %></h3>
-      <p class="lead">Preparation Time: <%= @recipe.preparation_time %> hour</p>
-      <p class="lead">Cooking Time: <%= @recipe.cooking_time %> hour</p>
+      <div class="row">
+        <div class="col-10">
+          <p class="lead">Preparation Time: <%= @recipe.preparation_time %> hour</p>
+          <p class="lead">Cooking Time: <%= @recipe.cooking_time %> hour</p>
+        </div>
+        <div class="col-2">
+          <%= form_with model: @recipe, url: recipe_path(@recipe), class: "form-check form-switch", method: :patch do |form| %>
+            <%= form.check_box :public, class: "form-check-input", role: "switch", id: "flexSwitchCheckDefault", style: "cursor: pointer" %>
+            <%= form.label :public, class: "form-check-label", for: "flexSwitchCheckDefault" %>
+          <% end %>
+        </div>
+      </div>
       <hr class="my-4">
       <p class='recipe-text'><%= @recipe.description %></p>
-    </div>
-    <div>
-      <%= form_with model: @recipe, url: recipe_path(@recipe), class: "form-check form-switch", method: :patch do |form| %>
-        <%= form.check_box :public, class: "form-check-input", role: "switch", id: "flexSwitchCheckDefault", style: "cursor: pointer" %>
-        <%= form.label :public, class: "form-check-label", for: "flexSwitchCheckDefault" %>
-      <% end %>
     </div>
   </div>
 

@@ -27,8 +27,7 @@ RSpec.describe 'recipes/show.html.erb', type: :feature do
   it 'Shows table of ingredients' do
     expect(page).to have_content('Food Name')
     expect(page).to have_content('Quantity')
-    expect(page).to have_content('Price Per Unit')
-    expect(page).to have_content('Total Price')
+    expect(page).to have_content('Value')
     expect(page).to have_content('Action')
     expect(page).to have_content(@recipe_food.food.name)
     expect(page).to have_field('recipe_food_quantity', with: @recipe_food.quantity)

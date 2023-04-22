@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   def index
     @user = current_user
-    @recipes = @user.recipes.all.order(created_at: :desc)
+    @recipes = @user.recipes.includes(:user, :recipe_foods).order(created_at: :desc)
   end
 
   def show

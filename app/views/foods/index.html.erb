@@ -1,12 +1,11 @@
 <h3>Available Food Items</h3>
 <a href="/foods/new">
-  <button type="button" class="btn btn-primary mb-3">Add food</button>
+  <button type="button" class="btn btn-primary mb-3 float-right">Add food</button>
 </a>
 <table class="table mt-4">
   <thead class="thead-dark">
     <tr>
       <th>Food</th>
-      <th>Available Quantity</th>
       <th>Measurement unit</th>
       <th>Unit price</th>
       <th>Actions</th>
@@ -16,7 +15,6 @@
   <tbody>
     <tr class="food-row">
       <td><%= food.name %></td>
-      <td><%= food.quantity %></td>
       <td><%= food.measurement_unit %></td>
       <td><%= food.price %></td>
       <td> 
