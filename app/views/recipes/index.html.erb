@@ -1,0 +1,34 @@
+<%= link_to new_recipe_path(), class: "d-flex justify-content-center" do %>
+  <button class="btn btn-primary">New Recipe</button>
+<% end %>
+
+<div class="container mt-5">
+  <% if @recipes.empty? %>
+    <div class="text-center">
+      <h1> No recipes to show </h1>
+    <div>
+  <% else %>
+    <div class="card-header mb-3">
+      <h3>My recipes</h3>
+    </div>
+    <% @recipes.each do |recipe| %>
+      <div class="card">
+        <div class="d-flex">
+          <div class="card-header" style="width: 30%">
+            <%= link_to recipe_path(recipe), style: "text-decoration: none; color: black" do %>
+              <h4><%= recipe.name %></h4>
+            <% end %>
+            <div style="width: 30%">
+              <%= button_to "Delete", recipe_path(recipe), method: :delete, data: { confirm: "Are you sure you want to delete this food item?" }, class: "btn btn-danger w-75" %>
+            </div>
+          </div>
+          <div style="width: 70%">
+            <div class="card-body">
+              <p class="card-text"><%= recipe.description %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

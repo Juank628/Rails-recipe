@@ -1,0 +1,45 @@
+<div class="container mt-3">
+  <div class="jumbotron p-4">
+    <h3 class="display-6 text-center"><%= @recipe.name %> by <%= @user.name %></h3>
+    <div>
+      <div class="row">
+        <div class="col-10">
+          <p class="lead">Preparation Time: <%= @recipe.preparation_time %> hour</p>
+          <p class="lead">Cooking Time: <%= @recipe.cooking_time %> hour</p>
+        </div>
+        <div class="col-2">
+          <%= form_with model: @recipe, url: recipe_path(@recipe), class: "form-check form-switch", method: :patch do |form| %>
+            <%= form.check_box :public, class: "form-check-input", role: "switch", id: "flexSwitchCheckDefault", style: "cursor: pointer" %>
+            <%= form.label :public, class: "form-check-label", for: "flexSwitchCheckDefault" %>
+          <% end %>
+        </div>
+      </div>
+      <hr class="my-4">
+      <p class='recipe-text'><%= @recipe.description %></p>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-between">
+    <%= button_to 'Generate Shopping List', shopping_lists_path, method: :get, class: "btn btn-primary" %>
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#foodsModal">
+      Add Ingredients
+    </button>
+  </div>
+
+
+  <%= render "food_list_modal", recipe: @recipe, food: @food %>
+
+  <% if flash[:error] %>
+    <div class="alert alert-danger"><%= flash[:error] %></div>
+  <% end %>
+  <%= render("recipe_foods/index", recipe_foods: @recipe_foods) %>
+
+
+</div>
+
+<script> 
+  $(document).on('change', '#flexSwitchCheckDefault', function() {
+    $(this).closest('form').submit();
+  });
+</script>
