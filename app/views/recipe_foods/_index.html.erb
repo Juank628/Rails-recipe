@@ -8,7 +8,6 @@
         <tr>
           <th class="text-center">Food Name</th>
           <th class="text-center">Quantity</th>
-          <th class="text-center">Price Per Unit</th>
           <th class="text-center">Total Price</th>
           <th class="text-center">Action</th>
         </tr>
@@ -30,8 +29,7 @@
                 </div>
               <% end %>
             </td>
-            <td class="text-center"><%= recipe_food.food.price %></td>
-            <td class="text-center"><%= recipe_food.quantity*recipe_food.food.price %></td>
+            <td class="text-center">$<%= recipe_food.quantity*recipe_food.food.price %></td>
             <td class="text-center">
               <%= button_to "Delete", recipe_food_path(recipe_food), method: :delete, data: { confirm: "Are you sure you want to delete this food item?" }, class: "btn btn-danger" %>
             </td>
