@@ -1,0 +1,60 @@
+<div class="table table-striped mt-4">
+  <% if @recipe_foods.empty? %>
+    <h3 class="text-center">Add ingredients to your recipe</h3>
+  <% else %>
+    <h4 style = "margin-top: 0" >Ingredients</h4>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th class="text-center">Food Name</th>
+          <th class="text-center">Quantity</th>
+          <th class="text-center">Value</th>
+          <th class="text-center">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @recipe_foods.each do |recipe_food| %>
+          <tr>
+            <td><%= recipe_food.food.name %></td>
+            <td class="text-center">
+              <div class="quantity-cell">
+                <%= recipe_food.quantity %>
+              </div>
+              <div class="form-cell hidden">
+                <%= form_with model: recipe_food, url: recipe_food_path(recipe_food), method: :patch do |form| %>
+                  <%= form.hidden_field :recipe_id, value: recipe_food.recipe_id %>
+                  <%= form.hidden_field :food_id, value: recipe_food.food_id %>
+                  <div class="input-group mb-2">
+                    <%= form.number_field :quantity, class: "form-control text-center", value: recipe_food.quantity, style: "width: 0", required: true, step: "any" %>
+                    <div class="input-group-prepend">
+                      <div class="input-group-text"><%= recipe_food.food.measurement_unit %></div>
+                    </div>
+                    <%= form.submit "Update", class: "btn btn-primary" %>
+                  </div>
+                <% end %>
+              </div>
+            </td>
+            <td class="text-center">$<%= recipe_food.quantity*recipe_food.food.price %></td>
+            <td class="text-center d-flex justify-content-center" style="gap: 1em">
+              <button type="button" class="btn btn-primary" onclick="toggleQuantityForm(this)">Modify</button>
+              <%= button_to "Delete", recipe_food_path(recipe_food), method: :delete, data: { confirm: "Are you sure you want to delete this food item?" }, class: "btn btn-danger" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>
+
+<script>
+function toggleQuantityForm(button) {
+  const quantityCell = button.closest('tr').querySelector('.quantity-cell');
+  const quantityForm = button.closest('tr').querySelector('.form-cell');
+
+  console.log("quantityCell",quantityCell)
+  console.log("quantityForm",quantityForm)
+
+  quantityCell.classList.toggle('hidden');
+  quantityForm.classList.toggle('hidden');
+}
+</script>
