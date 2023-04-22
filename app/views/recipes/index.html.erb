@@ -23,9 +23,7 @@
             <%= button_to "Delete", recipe_path(recipe), method: :delete, data: { confirm: "Are you sure you want to delete this food item?" }, class: "btn btn-danger w-75" %>
           </div>
           <div class="col-8 card-body">
-            <%= link_to recipe_path(recipe), style: "text-decoration: none; color: black" do %>
-              <p class="card-text"><%= recipe.description %></p>
-            <% end %>
+            <p class="card-text"><%= recipe.description %></p>
           </div>
         </div>
       </div>
