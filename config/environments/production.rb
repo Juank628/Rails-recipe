@@ -26,7 +26,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: 'localhost', protocol: 'https' }
+  config.action_mailer.default_url_options = { host: 'https://kitchen-recipe-rails.onrender.com', protocol: 'https' }
 
   config.action_mailer.smtp_settings = {
     address: 'smtp-relay.sendinblue.com',
@@ -36,7 +36,6 @@ Rails.application.configure do
     authentication: 'login',
     enable_starttls_auto: true
   }
-end
 
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
