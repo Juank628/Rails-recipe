@@ -22,7 +22,21 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
+  config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present? || ENV["RENDER"].present?
+
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: 'localhost', protocol: 'https' }
+
+  config.action_mailer.smtp_settings = {
+    address: 'smtp-relay.sendinblue.com',
+    port: 587,
+    user_name: 'nagorikkendrabd@gmail.com',
+    password: 'xsmtpsib-83e0c669b48e6493e6081917f15d54aa6a4f550c832024abf98a22afec567f53-q3dxTWAPNnHzvJBU',
+    authentication: 'login',
+    enable_starttls_auto: true
+  }
+end
 
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass

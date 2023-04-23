@@ -72,10 +72,10 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   config.action_mailer.smtp_settings = {
-    address: 'smtp.office365.com',
+    address: 'smtp-relay.sendinblue.com',
     port: 587,
-    user_name: 'gio_microverse@hotmail.com',
-    password: 'Microverse1!',
+    user_name: 'nagorikkendrabd@gmail.com',
+    password: ENV['MAILER_PASS'],
     authentication: 'login',
     enable_starttls_auto: true
   }
