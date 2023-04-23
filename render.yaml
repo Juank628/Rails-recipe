@@ -1,7 +1,7 @@
 databases:
   - name: Kitchen_Recipe
-    databaseName: Recipe_production
-    user: recipe_production_admin
+    databaseName: Kitchen_Recipe
+    user: Kitchen_Recipe
 
 services:
   - type: web
