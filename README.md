@@ -15,6 +15,7 @@
 - [📖 About the Project](#about-project)
   - [🛠 Built With](#built-with)
     - [Key Features](#key-features)
+    - [Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -56,6 +57,12 @@ This is a Recipe App built with `Rails` framework to let users sign up, login, a
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- LIVE DEMO -->
+
+## 🚀 Live Demo <a name="live-demo"></a>
+
+Live demo is available [here](https://kitchen-recipe-rails.onrender.com).
+
 <!-- GETTING STARTED -->
 
 ## 💻 Getting Started
@@ -96,7 +103,7 @@ $ bundle init
 
 $ bundle install (install dependencies)
 ```
-**Note: You might need to update [database.yml](./config/database.yml) for development and testing environments with necessary username and password for your database in their respective positions.**
+**Note: You might need to update [database.yml](./config/database.yml) for development and testing environments with necessary username and password for your database in their respective positions. For free deployment purpose sending of user confirmation email option is commented in [user.rb](app/models/user.rb) model.**
 ```
 $ rails db:create
 
