@@ -103,7 +103,7 @@ $ bundle init
 
 $ bundle install (install dependencies)
 ```
-**Note: You might need to update [database.yml](./config/database.yml) for development and testing environments with necessary username and password for your database in their respective positions. For free deployment purpose sending of user confirmation email option is commented in [user.rb](app/models/user.rb) model.**
+**Note: You might need to update [database.yml](./config/database.yml) for development and testing environments with necessary username and password for your database in their respective positions. Because of free deployment, sending of user confirmation email option can take several hours to reach to the user mail box.**
 ```
 $ rails db:create
 
