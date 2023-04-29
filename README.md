@@ -61,7 +61,19 @@ This is a Recipe App built with `Rails` framework to let users sign up, login, a
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-Live demo is available [here](https://kitchen-recipe-rails.onrender.com).
+Live demo is available [here](https://kitchen-recipe-rails.onrender.com). Due to free accounts, hosted website may occur in inaccessibilty. Kindly take a look at the UI below:
+
+| Food Page  | Recipe Page |
+| ------------- | ------------- |
+| ![image](https://user-images.githubusercontent.com/64170307/235312165-da258f53-379d-4668-951e-82944bcd3cb8.png)  | ![image](https://user-images.githubusercontent.com/64170307/235312192-58ffe70a-604f-4e5e-93b8-83987c264edd.png)  |
+
+| Public Recipe Page  | Second Header |
+| ------------- | ------------- |
+| ![image](https://user-images.githubusercontent.com/64170307/235312244-9ad98c4f-3fc8-44bb-89ba-73e53a4a5490.png)  | ![image](https://user-images.githubusercontent.com/64170307/235312259-4a872441-e0af-4abe-a0aa-ba4066b91a94.png)  |
+
+| Personal Recipe Details  | Public Recipe Details |
+| ------------- | ------------- |
+| ![image](https://user-images.githubusercontent.com/64170307/235312282-a6ceb2b8-ad70-4089-9cb8-dfac04bd2b8d.png)  | ![image](https://user-images.githubusercontent.com/64170307/235312302-ef5c0f4b-4c4f-45a6-847f-e9983121472c.png)  |
 
 <!-- GETTING STARTED -->
 
