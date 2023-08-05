@@ -61,7 +61,7 @@ This is a Recipe App built with `Rails` framework to let users sign up, login, a
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-Live demo is available [here](https://kitchen-recipe-rails.onrender.com).
+Live demo is available [here](https://kitchen-recipe-rails.onrender.com). Unfortunately live demo is unavailable due to not having paid server on render.
 
 <!-- GETTING STARTED -->
 
